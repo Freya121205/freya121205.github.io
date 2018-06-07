@@ -14,15 +14,93 @@
   <body>
   <script>
   function setup() {
-    createCanvas(windowWidth,windowHeight);
-  }
-  function draw() {
-    background(255);
-    textSize(70);
-    textAlign(CENTER);
-    fill(0);
-    text("test",windowWidth/2,windowHeight/2);
-  }
+    createCanvas(600, 400);
+
+
+}
+
+var countdown = 180;
+var canvas = 400;
+var ballx = canvas / 2;
+var bally = canvas / 2;
+var speedy = 1;
+var startballsize = 100;
+var ballsize = startballsize;
+var startspeedx = 8;
+var speedx = startspeedx;
+
+function draw() {
+    background(10, 0, 0);
+
+    // fill(0,200,50) green
+    fill(255, 255, 255);
+    ellipse(ballx, bally, ballsize, ballsize);
+    rect(20, mouseY, 20, 125);
+
+    for (var i = 0; i < 20; i++) {
+        rect(300, i * 27, 5, 10);
+    }
+
+    countdown = countdown - 1;
+    if (countdown > 0) {
+        textSize(85);
+        text((countdown / 60 | 0) + 1, 275, 200);
+        stroke(90);
+
+        return
+    }
+
+    ballx = ballx + speedx;
+    bally = bally + speedy;
+
+    speedy = speedy + 0.2
+
+
+    if (ballx <= 0) {
+        ballx = 300;
+        speedx = startspeedx;
+        ballsize = startballsize;
+        countdown = 180;
+    }
+    if (ballx >= 575) {
+        speedx = -speedx * 1.09;
+    }
+
+
+    if (bally <= 25) {
+        speedy = abs(speedy);
+    }
+    if (bally >= 375) {
+        speedy = 0 - abs(speedy);
+    }
+
+    var d = afstand(ballx, bally, 20, mouseY, 20, 100)
+    if (d < ballsize * 0.5) {
+        speedx = abs(speedx);
+        ballsize = ballsize * 0.99;
+    }
+}
+
+
+function afstand(vores_x, vores_y,
+    kasse_x, kasse_y,
+    bred, hoej) {
+    var x = kasse_x;
+    var y = kasse_y;
+    if (vores_x > x) {
+        x = vores_x;
+    }
+    if (x > kasse_x + bred) {
+        x = kasse_x + bred;
+    }
+    if (vores_y > y) {
+        y = vores_y;
+    }
+    if (y > kasse_y + hoej) {
+        y = kasse_y + hoej;
+    }
+    return dist(vores_x, vores_y, x, y);
+}
   </script>
   </body>
 </html>
