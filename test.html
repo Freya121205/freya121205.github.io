@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+    <style>
+      html, body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        background:rgb(255, 255, 255);
+      }
+    </style>
+  </head>
+  <body>
+  <script>
+
+
+      
+  function setup() {
+    createCanvas(500, 400);
+background(0,255,100);
+
+}
+
+
+var x = 0;
+
+function draw() {
+    
+  // print( mouseX );
+  // hvis mouseX er større en width eller (    ||    ) mouseX er mindre end 0
+  //  return
+if(mouseX > width || mouseX < 0){
+    return
+}
+
+if(mouseY > height || mouseY < 0){
+    return
+}
+//first row
+ fill(255,0,10);
+ rect( 0, 0, 100, 200);
+
+ fill(1, 8, 147);
+ rect(100, 0, 100, 200);
+
+  fill(255,0,255);
+ rect( 200, 0, 100, 200);
+
+ fill(0,153, 7);
+ rect(300, 0, 100, 200);
+
+ fill(225, 255,0);
+ rect(400, 0, 100, 200);
+
+
+//second row
+  fill(147,1,1);
+ rect( 0, 200, 100, 200);
+
+ fill(0, 0, 255);
+ rect(100, 200, 100, 200);
+
+  fill(130,0,173);
+ rect( 200, 200, 100, 200);
+
+ fill(0, 255, 0);
+ rect(300, 200, 100, 200);
+
+ fill(237, 226, 26);
+ rect(400, 200, 100, 200);
+
+
+//x = x + 1;
+//fill(255,255,255)
+//rect(0,x,40,100);
+
+//hvis x er større end height så sæt x til 0
+if( x > height) {
+  x = 0
+}
+
+}
+</script>
+<h2></h2>
+  </body>
+</html>
